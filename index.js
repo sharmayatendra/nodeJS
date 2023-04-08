@@ -1,4 +1,5 @@
 const fs = require("fs");
+const fsPromises = require("fs").promises;
 const path = require("path");
 
 //instead of hardcoding this we can use path module
@@ -7,10 +8,38 @@ const path = require("path");
 //   console.log(data);
 // });
 
-fs.readFile(path.join(__dirname, "starter.txt"), "utf-8", (err, data) => {
-  if (err) throw err;
-  console.log(data);
-});
+// fs.readFile(path.join(__dirname, "starter.txt"), "utf-8", (err, data) => {
+//   if (err) throw err;
+//   console.log(data);
+// });
+
+const fileOps = async () => {
+  try {
+    const data = await fsPromises.readFile(
+      path.join(__dirname, "starter.txt"),
+      "utf8"
+    );
+    await fsPromises.unlink(path.join(__dirname, "starter.txt"));
+    await fsPromises.writeFile(path.join(__dirname, "promiseWrite.txt"), data);
+    await fsPromises.appendFile(
+      path.join(__dirname, "promiseWrite.txt"),
+      "\n\n appending in promiseWrite"
+    );
+    await fsPromises.rename(
+      path.join(__dirname, "promiseWrite.txt"),
+      path.join(__dirname, "promiseCompletes.txt")
+    );
+    const newData = await fsPromises.readFile(
+      path.join(__dirname, "promiseCompletes.txt"),
+      "utf8"
+    );
+    console.log(newData);
+  } catch (err) {
+    console.err(err);
+  }
+};
+
+fileOps();
 
 console.log("hello world");
 
@@ -18,7 +47,7 @@ console.log("hello world");
 
 // this is kind of callback hell:
 
-fs.writeFile(
+/*fs.writeFile(
   path.join(__dirname, "write.txt"),
   "i am writing into the file",
   (err) => {
@@ -43,7 +72,7 @@ fs.writeFile(
       }
     );
   }
-);
+);*/
 
 // if the file doesn't exist in appendFile method it will create the file.
 

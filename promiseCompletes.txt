@@ -1,0 +1,3 @@
+Hii, i am yatendra
+
+ appending in promiseWrite

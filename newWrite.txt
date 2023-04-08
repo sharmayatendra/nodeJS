@@ -1,2 +1,0 @@
-i am writing into the file
- i am appending in write.txt file
