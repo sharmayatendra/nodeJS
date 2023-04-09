@@ -1,6 +1,14 @@
 const fs = require("fs");
 const fsPromises = require("fs").promises;
 const path = require("path");
+const { format } = require("date-fns");
+const { v4: uuid } = require("uuid");
+
+console.log(format(new Date(), "yyyyMMdd\tHH:mm:ss"));
+
+console.log("testing");
+
+console.log("id:", uuid());
 
 //instead of hardcoding this we can use path module
 // fs.readFile("./starter.txt", "utf-8", (err, data) => {
@@ -35,7 +43,7 @@ const fileOps = async () => {
     );
     console.log(newData);
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 };
 

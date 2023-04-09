@@ -1,0 +1,3 @@
+Difference b/w tilde(~) & caret(^) in packages?
+Ans: if caret(^) is used updates minor version & patch version both.
+     but if tilde(~) is used update only the patch version not any other thing.
