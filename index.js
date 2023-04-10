@@ -1,21 +1,21 @@
 const fs = require("fs");
 const fsPromises = require("fs").promises;
 const path = require("path");
-const logEvents = require("./logEvents");
+// const logEvents = require("./logEvents");
 
-const EventEmitter = require("events");
+// const EventEmitter = require("events");
 
-class MyEmitter extends EventEmitter {}
+// class MyEmitter extends EventEmitter {}
 
-// object initialize
-const myEmitter = new MyEmitter();
+// // object initialize
+// const myEmitter = new MyEmitter();
 
-//add listener for log evenet
-myEmitter.on("log", (msg) => logEvents(msg));
+// //add listener for log evenet
+// myEmitter.on("log", (msg) => logEvents(msg));
 
-setTimeout(() => {
-  myEmitter.emit("log", "log event emitted!!");
-}, 2000);
+// setTimeout(() => {
+//   myEmitter.emit("log", "log event emitted!!");
+// }, 2000);
 
 //instead of hardcoding this we can use path module
 // fs.readFile("./starter.txt", "utf-8", (err, data) => {
